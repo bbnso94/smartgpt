@@ -1,8 +1,8 @@
-use std::{error::Error, fmt::Display, collections::HashMap};
+use std::{error::Error, fmt::Display};
 use async_trait::async_trait;
-use regex::Regex;
 
-use select::{document::Document, predicate::Name};
+
+
 
 mod types;
 
@@ -63,7 +63,7 @@ pub async fn get_wikipedia(ctx: &mut CommandContext, name: &str) -> Result<Strin
     let content = page.extract.clone().unwrap_or("".to_string());
 
     let (content, length_warning) = apply_chunks(&content, 1, 5000);
-    let length_warning = length_warning
+    let _length_warning = length_warning
         .map(|el| format!("{el}\n\n"));
 
     let output = WikipediaOutput {
